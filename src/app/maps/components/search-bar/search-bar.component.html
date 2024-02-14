@@ -1,0 +1,10 @@
+<div class="search-container">
+  <input
+    type="text"
+    class="form-control"
+    placeholder="search a location..."
+    #txtQuery
+    (keyup)="onQueryChanged(txtQuery.value)"
+  >
+  <maps-search-results />
+</div>
