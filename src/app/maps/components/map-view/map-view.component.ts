@@ -18,12 +18,22 @@ export class MapViewComponent implements AfterViewInit {
   constructor(private placesService: PlacesService){}
 
   ngAfterViewInit(): void {
-    var map = new maplibregl.Map({
+    const map = new maplibregl.Map({
       container: this.mapDivElement.nativeElement, // container id
       style: 'https://demotiles.maplibre.org/style.json', // style URL
       center: [0, 0], // starting position [lng, lat]
       zoom: 1 // starting zoom
-  });
+    });
+
+    const popup = new maplibregl.Popup({closeOnClick: false})
+    .setLngLat([-96, 37.8])
+    .setHTML('<h1>Hello World!</h1>')
+    .addTo(map);
+
+    const marker = new maplibregl.Marker()
+    .setLngLat([0, 0])
+    .addTo(map);
+
   }
 
 }
