@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { GeocoderApiClient } from '../api/geocoderApiClient';
+import { MapService } from './map.service';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,10 @@ export class PlacesService {
     return !!this.useLocation;
   }
 
-  constructor(private geocoderApiClient: GeocoderApiClient) {
+  constructor(
+    private geocoderApiClient: GeocoderApiClient,
+    private mapService: MapService
+  ) {
     this.getUserLocation();
   }
 
@@ -48,6 +52,7 @@ export class PlacesService {
       .subscribe(resp => {
         this.isLoadingPlaces = false;
         this.places = resp.features;
+        this.mapService.createMarkersFromPlaces(this.places);
         console.log(this.places);
       })
   }
