@@ -1,4 +1,3 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { GeocoderApiClient } from '../api/geocoderApiClient';
 
@@ -36,6 +35,11 @@ export class PlacesService {
   }
 
   getPlacesByQuery(query: string = '') {
+    if(query.length === 0) {
+      this.isLoadingPlaces = false;
+      this.places = [];
+      return;
+    }
     if(!this.useLocation) throw Error('No user location available');
 
     this.isLoadingPlaces = true;
