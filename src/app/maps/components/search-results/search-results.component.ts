@@ -11,6 +11,8 @@ import { NgFor, NgIf } from '@angular/common';
 })
 export class SearchResultsComponent {
 
+  public selectedId: string = '';
+
   constructor(
     private placesServices: PlacesService,
     private mapService: MapService,
@@ -24,12 +26,12 @@ export class SearchResultsComponent {
     return this.placesServices.places;
   }
 
-  flyTo(coords: any) {
+  flyTo(feature: any) {
+    this.selectedId = feature.properties.place_id;
     const center = [
-      coords.bbox[0] + (coords.bbox[2] - coords.bbox[0]) / 2,
-      coords.bbox[1] + (coords.bbox[3] - coords.bbox[1]) / 2
+      feature.bbox[0] + (feature.bbox[2] - feature.bbox[0]) / 2,
+      feature.bbox[1] + (feature.bbox[3] - feature.bbox[1]) / 2
     ];
-    // const [lng, lat] = place.center;
     this.mapService.flyTo(center);
   }
 }

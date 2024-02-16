@@ -3,13 +3,16 @@
   <span>Please wait...</span>
 </div>
 <ul class="list-group mt-2" *ngIf="places.length > 0">
-  <li *ngFor="let place of places" (click)="flyTo(place)" class="list-group-item list-group-item-action pointer">
+  <li
+    *ngFor="let place of places"
+    class="list-group-item list-group-item-action pointer"
+    [class.active]="place.properties.place_id === selectedId"
+    (click)="flyTo(place)"
+  >
     <h6>{{ place.properties.name }}</h6>
     <p>
-      {{place.properties.display_name}}
+      {{ place.properties.display_name }}
     </p>
-    <button class="btn btn-sm">
-      Locations
-    </button>
+    <button class="btn btn-sm">Locations</button>
   </li>
 </ul>
