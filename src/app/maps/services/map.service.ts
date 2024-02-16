@@ -17,7 +17,7 @@ export class MapService {
     this.map = map;
   }
 
-  flyTo(coords: LngLatLike) {
+  flyTo(coords: LngLatLike | any) {
     if(!this.isMapReady) throw Error('The map is not initialized');
 
     this.map.flyTo({
