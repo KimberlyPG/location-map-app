@@ -52,7 +52,7 @@ export class PlacesService {
       .subscribe(resp => {
         this.isLoadingPlaces = false;
         this.places = resp.features;
-        this.mapService.createMarkersFromPlaces(this.places);
+        this.mapService.createMarkersFromPlaces(this.places, this.useLocation!);
         console.log(this.places);
       })
   }
