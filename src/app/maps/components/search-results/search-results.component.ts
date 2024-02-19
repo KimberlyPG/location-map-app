@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { MapService, PlacesService } from '../../services';
-import { NgFor, NgIf } from '@angular/common';
+import { CommonModule } from '@angular/common';
+import { Feature } from '../../interfaces/places';
 
 @Component({
   selector: 'maps-search-results',
   standalone: true,
-  imports: [NgIf, NgFor],
+  imports: [CommonModule],
   templateUrl: './search-results.component.html',
   styleUrl: './search-results.component.css'
 })
@@ -33,5 +34,15 @@ export class SearchResultsComponent {
       feature.bbox[1] + (feature.bbox[3] - feature.bbox[1]) / 2
     ];
     this.mapService.flyTo(center);
+  }
+
+  getDirections(feature: Feature) {
+    const start = this.placesServices.useLocation!;
+    const center: [number, number] = [
+      feature.bbox[0] + (feature.bbox[2] - feature.bbox[0]) / 2,
+      feature.bbox[1] + (feature.bbox[3] - feature.bbox[1]) / 2
+    ];
+
+    this.mapService.getRoutes(start, center);
   }
 }
