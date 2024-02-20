@@ -5,7 +5,7 @@ import "@stadiamaps/maplibre-search-box/dist/style.css";
 
 import { MapService } from '../../services/map.service';
 import { PlacesService } from '../../services/places.service';
-import { environment } from '../../../../../.environments';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'maps-map-view',
@@ -35,7 +35,7 @@ export class MapViewComponent implements AfterViewInit {
       zoom: 1 // starting zoom
     });
 
-    new maplibregl.Popup({closeOnClick: false})
+    const popup = new maplibregl.Popup({closeOnClick: false})
     .setLngLat(this.placesService.useLocation)
     .setHTML('<h1>Mi location!</h1>')
     .addTo(map);
