@@ -5,7 +5,7 @@ import "@stadiamaps/maplibre-search-box/dist/style.css";
 
 import { MapService } from '../../services/map.service';
 import { PlacesService } from '../../services/places.service';
-import { environment } from '../../../../environments/environments';
+import { environment } from '../../../../../.environments';
 
 @Component({
   selector: 'maps-map-view',
