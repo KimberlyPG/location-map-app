@@ -37,6 +37,11 @@ export class SearchResultsComponent {
   }
 
   getDirections(feature: Feature) {
+
+    if(!this.placesServices.useLocation) throw Error('Not user location available');
+
+    this.placesServices.deletePlaces();
+
     const start = this.placesServices.useLocation!;
     const center: [number, number] = [
       feature.bbox[0] + (feature.bbox[2] - feature.bbox[0]) / 2,

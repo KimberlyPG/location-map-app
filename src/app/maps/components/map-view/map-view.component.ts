@@ -35,7 +35,7 @@ export class MapViewComponent implements AfterViewInit {
       zoom: 1 // starting zoom
     });
 
-    const popup = new maplibregl.Popup({closeOnClick: false})
+    new maplibregl.Popup({closeOnClick: false})
     .setLngLat(this.placesService.useLocation)
     .setHTML('<h1>Mi location!</h1>')
     .addTo(map);
