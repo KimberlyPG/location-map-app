@@ -5,7 +5,6 @@ import "@stadiamaps/maplibre-search-box/dist/style.css";
 
 import { MapService } from '../../services/map.service';
 import { PlacesService } from '../../services/places.service';
-import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'maps-map-view',
@@ -24,7 +23,7 @@ export class MapViewComponent implements AfterViewInit {
     private mapService: MapService,
     ){}
 
-  public apiKey: string = environment.apiKey;
+  public apiKey: string = import.meta.env['NG_APP_API_KEY'];
   public baseMap: string = 'arcgis/navigation';
 
   ngAfterViewInit(): void {
