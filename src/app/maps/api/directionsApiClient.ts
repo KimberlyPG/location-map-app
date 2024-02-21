@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 @Injectable({providedIn: 'root'})
 export class DirectionsApiClient extends HttpClient {
 
-  public baseUrl = 'http://router.project-osrm.org/route/v1/driving/';
+  public baseUrl = 'https://router.project-osrm.org/route/v1/driving/';
 
   constructor(handler: HttpHandler) {
     super(handler);
